@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "mix",
+    "watch": "mix watch",
+    "hot": "mix watch --hot",
+    "prod": "mix --production",
+    "check-format": "prettier --list-different 'resources/**/*.{css,js,vue}'",
+    "format": "prettier --write 'resources/**/*.{css,js,vue}'"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^7.20.0",
+    "laravel-mix": "^6.0.43",
+    "postcss": "^8.4.12",
+    "prettier": "^2.6.2",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.50.0",
+    "sass-loader": "^12.6.0",
+    "vue-loader": "^16.8.3",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "dependencies": {
+    "@vue/compat": "^3.2.29",
+    "form-backend-validation": "^2.3.3",
+    "vue": "^3.2.29",
+    "vue-google-autocomplete": "^1.1.3"
+  }
+}
