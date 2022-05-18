@@ -15,7 +15,7 @@
             v-on:keypress.enter.prevent=""
             v-on:placechanged="getAddressData">
         </vue-google-autocomplete>
-        <button type="button" class="rounded bg-primary-500 ml-2 text-white px-3" @click="getCurrentLocation">
+        <button type="button" class="rounded bg-primary-500 ml-2 text-white px-3" @click="getCurrentLocation" v-if="this.field.currentLocationButton">
           <span class="flex justify-center items-center" v-if="loadingCurrentLocation">
             <span class="spin-load ease-linear rounded-full border-2 border-t-2 border-white"></span>
           </span>

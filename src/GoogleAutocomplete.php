@@ -34,12 +34,26 @@ class GoogleAutocomplete extends Field
     }
 
     /**
+     * Enable Current Location Button
+     *
+     * @param [type] $list
+     * @return $this
+     */
+    public function enableCurrentLocation()
+    {
+        return $this->withMeta([
+            'currentLocationButton' => true
+        ]);
+    }
+
+    /**
      * Pass a country codes array
      *
      * @param [type] $list
      * @return $this
      */
-    public function countries($list){
+    public function countries($list)
+    {
         return $this->withMeta([
             'countries' => $list
         ]);
@@ -53,7 +67,8 @@ class GoogleAutocomplete extends Field
      * @param string $type
      * @return $this
      */
-    public function placeType($type){
+    public function placeType($type)
+    {
         return $this->withMeta([
             'type' => $type
         ]);
@@ -69,7 +84,7 @@ class GoogleAutocomplete extends Field
     public function withValues(array $data)
     {
         $currentObject = $this->meta['addressObject'];
-        
+
         return $this->withMeta([
             'addressObject' => array_merge($currentObject, $data)
         ]);

@@ -116,6 +116,12 @@ use BrandonJBegle\GoogleAutocomplete\GoogleAutocomplete;
 // All the same address data is still stored.  
 GoogleAutocomplete::make('Address')->placeType('establishment');
 ```
+
+## Enable Current Location Button
+```php
+GoogleAutocomplete::make('Address')->enableCurrentLocation();
+```
+
 ## Localization
 
 If you want this package in your language, just create a json lang file in your `resources/lang/vendor/google-autocomplete` folder. Example
