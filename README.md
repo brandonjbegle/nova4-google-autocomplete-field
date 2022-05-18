@@ -50,8 +50,8 @@ GoogleAutocomplete::make('Address')
 You can access other parameter like `latitude, longitude, street_number, route, locality, administrative_area_level_1, country, postal_code`, along with everything available in the - every field present in the [PlaceResult object](https://developers.google.com/maps/documentation/javascript/reference/#PlaceResult)
 
 ```php
-use EmilianoTisato\GoogleAutocomplete\AddressMetadata;
-use EmilianoTisato\GoogleAutocomplete\GoogleAutocomplete;
+use BrandonJBegle\GoogleAutocomplete\AddressMetadata;
+use BrandonJBegle\GoogleAutocomplete\GoogleAutocomplete;
 
 // Now this address field will search and store the address as a string, but also made available the values in the withValues array
 GoogleAutocomplete::make('Address')->withValues(['latitude', 'longitude']),
@@ -72,8 +72,8 @@ AddressMetadata::make('long')->fromValue('longitude')->invisible(),
 If you want to concatenate certain elements of the geocoded object that is returned by Google, using `{{` and `}}`, wrap the key like you would above; like so:
 
 ```php
-use EmilianoTisato\GoogleAutocomplete\AddressMetadata;
-use EmilianoTisato\GoogleAutocomplete\GoogleAutocomplete;
+use BrandonJBegle\GoogleAutocomplete\AddressMetadata;
+use BrandonJBegle\GoogleAutocomplete\GoogleAutocomplete;
 
 GoogleAutocomplete::make('Address')->withValues(['latitude', 'longitude']),
 
