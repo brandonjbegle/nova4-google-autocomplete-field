@@ -69,10 +69,17 @@ export default {
   },
 
   methods: {
-    getCurrentLocation() {
-      this.loadingCurrentLocation = true;
+   getCurrentLocation() {
+  this.loadingCurrentLocation = true;
+  this.$nextTick(() => {
+    if (this.$refs.address && this.$refs.address.geolocate) {
       this.$refs.address.geolocate();
-    },
+    } else {
+      console.error("VueGoogleAutocomplete: Address input is not ready.");
+      this.loadingCurrentLocation = false;
+    }
+  });
+},
     /**
      * Get address
      */
