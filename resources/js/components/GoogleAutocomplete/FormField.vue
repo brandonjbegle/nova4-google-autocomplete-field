@@ -15,7 +15,8 @@
             v-on:keypress.enter.prevent=""
             v-on:placechanged="getAddressData">
         </vue-google-autocomplete>
-        <button type="button" class="rounded bg-primary-500 ml-2 text-white px-3" @click="getCurrentLocation" v-if="this.field.currentLocationButton">
+        <button type="button" class="rounded bg-primary-500 ml-2 text-white px-3" @click="getCurrentLocation"
+                v-if="this.field.currentLocationButton">
           <span class="flex justify-center items-center" v-if="loadingCurrentLocation">
             <span class="spin-load ease-linear rounded-full border-2 border-t-2 border-white"></span>
           </span>
@@ -37,11 +38,11 @@
 </template>
 
 <script>
-import {FormField, HandlesValidationErrors} from 'laravel-nova'
+import { FormField, HandlesValidationErrors } from 'laravel-nova'
 import VueGoogleAutocomplete from 'vue-google-autocomplete'
 
 export default {
-  components: {VueGoogleAutocomplete},
+  components: { VueGoogleAutocomplete },
 
   mixins: [FormField, HandlesValidationErrors],
 
@@ -55,11 +56,11 @@ export default {
   },
 
   computed: {
-    translate() {
+    translate () {
       return Nova.appConfig.google_autocomplete_translations
     },
 
-    placeholder() {
+    placeholder () {
       if (this.value != '') {
         return this.translate.update_address
       }
@@ -69,50 +70,50 @@ export default {
   },
 
   methods: {
-   getCurrentLocation() {
-  this.loadingCurrentLocation = true;
-  this.$nextTick(() => {
-    if (this.$refs.address && this.$refs.address.geolocate) {
-      this.$refs.address.geolocate();
-    } else {
-      console.error("VueGoogleAutocomplete: Address input is not ready.");
-      this.loadingCurrentLocation = false;
-    }
-  });
-},
+    getCurrentLocation () {
+      this.loadingCurrentLocation = true
+      this.$nextTick(() => {
+        if (this.$refs.address && this.$refs.address.geolocate) {
+          this.$refs.address.geolocate()
+        } else {
+          console.error('VueGoogleAutocomplete: Address input is not ready.')
+          this.loadingCurrentLocation = false
+        }
+      })
+    },
     /**
      * Get address
      */
-    getAddressData(addressData, placeResultData) {
-      this.loadingCurrentLocation = false;
+    getAddressData (addressData, placeResultData) {
+      this.loadingCurrentLocation = false
       // Save current data address as a string
       this.handleChange(placeResultData.formatted_address)
 
-      const retrievedAddress = {};
+      const retrievedAddress = {}
 
       // Emmit events to by catch up for the other AddressMetadata fields
       this.field.addressObject.forEach(element => {
         if (element.indexOf('.') < 0) {
           if (addressData.hasOwnProperty(element)) {
-            retrievedAddress[element] = addressData[element];
+            retrievedAddress[element] = addressData[element]
           }
           if (placeResultData.hasOwnProperty(element)) {
-            retrievedAddress[element] = placeResultData[element];
+            retrievedAddress[element] = placeResultData[element]
           }
         } else {
           // Separates the type
-          let value = element.split(".")[0];
-          let type = element.split(".")[1]; // long_name or short_name
+          let value = element.split('.')[0]
+          let type = element.split('.')[1] // long_name or short_name
 
           for (let i = 0; i < placeResultData.address_components.length; i++) {
-            let target = placeResultData.address_components[i];
+            let target = placeResultData.address_components[i]
 
             if (target.types.includes(value)) {
-              retrievedAddress[value] = target[type];
+              retrievedAddress[value] = target[type]
             }
           }
         }
-      });
+      })
 
       Nova.$emit('address-metadata-update', {
         ...retrievedAddress
@@ -122,21 +123,21 @@ export default {
     /*
      * Set the initial, internal value for the field.
      */
-    setInitialValue() {
+    setInitialValue () {
       this.value = this.field.value || ''
     },
 
     /**
      * Fill the given FormData object with the field's internal value.
      */
-    fill(formData) {
+    fill (formData) {
       formData.append(this.field.attribute, this.value || '')
     },
 
     /**
      * Update the field's internal value.
      */
-    handleChange(value) {
+    handleChange (value) {
       this.value = value
     }
   }
