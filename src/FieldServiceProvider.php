@@ -57,7 +57,7 @@ class FieldServiceProvider extends ServiceProvider
      */
     private static function getTranslations()
     {
-        $translationFile = resource_path('lang/vendor/google-autocomplete/'.app()->getLocale().'.json');
+        $translationFile = config('google-autocomplete.translation_path', resource_path('lang/vendor/google-autocomplete/en.json'));
         if (! is_readable($translationFile)) {
             return [];
         }
