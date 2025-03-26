@@ -12,6 +12,7 @@
             :country="this.field.countries"
             :types="this.field.type"
             v-model="value"
+            onfocus="this.setAttribute('autocomplete', 'dont-fill-it-in');"
             v-on:keypress.enter.prevent=""
             v-on:placechanged="getAddressData">
         </vue-google-autocomplete>
