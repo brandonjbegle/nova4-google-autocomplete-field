@@ -4,6 +4,7 @@
     <template #field>
       <div class="form-group flex">
         <vue-google-autocomplete
+            v-if="loaded"
             ref="address"
             :id="this.field.name"
             class="w-full form-control form-input form-input-bordered"
@@ -52,7 +53,8 @@ export default {
   data: function () {
     return {
       address: '',
-      loadingCurrentLocation: false
+      loadingCurrentLocation: false,
+      loaded: false
     }
   },
 
@@ -141,6 +143,11 @@ export default {
     handleChange (value) {
       this.value = value
     }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      this.loaded = true
+    })
   }
 }
 </script>
