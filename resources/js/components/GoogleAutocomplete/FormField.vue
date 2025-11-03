@@ -1,5 +1,4 @@
 <template>
-  <!--  <div>here?</div>-->
   <default-field :field="this.field">
     <template #field>
       <div class="form-group flex">
@@ -15,7 +14,8 @@
             v-model="value"
             onfocus="this.setAttribute('data-1p-ignore', true);"
             v-on:keypress.enter.prevent=""
-            v-on:placechanged="getAddressData">
+            v-on:placechanged="getAddressData"
+            :dusk="field.attribute">
         </vue-google-autocomplete>
         <button type="button" class="rounded bg-primary-500 ml-2 text-white px-3" @click="getCurrentLocation"
                 v-if="this.field.currentLocationButton">
