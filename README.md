@@ -122,6 +122,13 @@ GoogleAutocomplete::make('Address')->placeType('establishment');
 GoogleAutocomplete::make('Address')->enableCurrentLocation();
 ```
 
+## Enable/Disable automatic loading of Google Maps Places JS.
+It is enabled by default. How to disable it:
+```php
+// config/google-autocomplete.php
+'load_maps_api' => false,
+```
+
 ## Localization
 
 If you want this package in your language, just create a json lang file in your `resources/lang/vendor/google-autocomplete` folder. Example
